@@ -24,7 +24,8 @@
     "start": "cross-env NODE_ENV=development gulp library:watch:dev",
     "test": "eslint --ext .js ./test/library && cross-env NODE_ENV=test mocha --require ./test/babel-register.js './test/library/**/*.spec.js'",
     "test-watch": "eslint --ext .js ./test/library && cross-env NODE_ENV=test mocha --watch ./test --watch-extensions js,ts --require ./test/babel-register.js './test/library/**/*.spec.js'",
-    "storybook": "start-storybook -p 9001 -c .storybook --ci"
+    "storybook": "start-storybook -p 9001 -c .storybook --ci",
+    "build-storybook": "build-storybook -c .storybook -o .out"
   },
   "license": "MIT",
   "engines": {
