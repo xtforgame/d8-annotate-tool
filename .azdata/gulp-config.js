@@ -11,16 +11,16 @@ var config = {
       entry: {
         dir: 'src/library',
         js: {
-          glob: '**/*.{js,ts}',
+          glob: '**/*.{js,ts,jsx,tsx}',
         },
         ts: {
-          tsconfig: 'tsconfig.json',
-          glob: '**/*.ts',
+          tsconfig: 'tsconfig.build.json',
+          glob: '**/*.{ts,tsx}',
         },
       },
       output: {
         default: {
-          dir: 'dist/library',
+          dir: '',
         },
         //dev: {},
         //dist: {},

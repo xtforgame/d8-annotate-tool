@@ -1,15 +1,12 @@
 {
   "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": { 
-          "node": "10"
-        },
-        "forceAllTransforms": true
+    ["@babel/preset-env", {
+      "targets": { 
+        "node": "10"
       }
-    ],
+    }],
     "@babel/typescript",
+    "@babel/preset-react"
   ],
   "plugins": [
     "@babel/proposal-class-properties",
@@ -19,9 +16,12 @@
     "development": {
       "plugins": [
         ["module-resolver", {
-          "extensions": [".js", ".ts"],
+          "extensions": [".js", ".ts", ".jsx", ".tsx"],
           "alias": {
-            "~": "./src/library"
+            "~": "./src/library",
+            "common/config": "./src/common/configs/development",
+            "common": "./src/common",
+            "config": "./src/library/configs/development"
           }
         }]
       ]
@@ -29,9 +29,12 @@
     "production": {
       "plugins": [
         ["module-resolver", {
-          "extensions": [".js", ".ts"],
+          "extensions": [".js", ".ts", ".jsx", ".tsx"],
           "alias": {
-            "~": "./src/library"
+            "~": "./src/library",
+            "common/config": "./src/common/configs/production",
+            "common": "./src/common",
+            "config": "./src/library/configs/production"
           }
         }]
       ]
@@ -39,9 +42,12 @@
     "test": {
       "plugins": [
         ["module-resolver", {
-          "extensions": [".js", ".ts"],
+          "extensions": [".js", ".ts", ".jsx", ".tsx"],
           "alias": {
-            "~": "./src/library"
+            "~": "./src/library",
+            "common/config": "./src/common/configs/test",
+            "common": "./src/common",
+            "config": "./src/library/configs/test"
           }
         }]
       ]

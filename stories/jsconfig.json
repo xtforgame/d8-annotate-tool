@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "../../",
+    "paths": {
+      "~/*": ["stories/*"],
+      "library": ["src/library"],
+      "library/*": ["src/library/*"],
+    },
+  }
+}

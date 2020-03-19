@@ -1,6 +1,6 @@
-# AzDevBase
+# Azrmui
 
-A general purpose seed project base
+Az react material ui from [material ui](https://material-ui.com/)
 
 Run `npm install`
 
