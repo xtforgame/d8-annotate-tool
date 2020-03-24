@@ -19,6 +19,7 @@ import FormColorPicker from './FormColorPicker';
 import FormDatePicker from './FormDateTimePicker/FormDatePicker';
 import FormTimePicker from './FormDateTimePicker/FormTimePicker';
 import FormDateTimePicker from './FormDateTimePicker/FormDateTimePicker';
+import FormFieldButtonSelect from './FormFieldButtonSelect';
 
 import FormImagesInput from './FormImagesInput';
 
@@ -49,6 +50,7 @@ export {
   FormDatePicker,
   FormTimePicker,
   FormDateTimePicker,
+  FormFieldButtonSelect,
 
   FormImagesInput,
 
