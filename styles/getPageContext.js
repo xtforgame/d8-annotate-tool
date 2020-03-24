@@ -38,7 +38,6 @@ function getTheme(theme) {
   };
 
   if (theme.paletteType === 'dark') {
-    primary = _colors.indigo;
     background = {
       paper: _colors.grey[800],
       default: '#303030'

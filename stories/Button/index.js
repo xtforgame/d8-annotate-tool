@@ -10,39 +10,48 @@ import {
 } from '../shared';
 
 storiesOf('Buttons', module)
+  // .addParameters({
+  //   info: {
+  //     inline: true,
+  //     propTables: false,
+  //     header: false,
+  //     maxPropObjectKeys: 10,
+  //     maxPropArrayLength: 10,
+  //   },
+  // })
   .add('SuccessButton',
-    withInfo()(()=>(
+    ()=>(
       <FlexRow>
         <FlexColumn>
-          <SuccessButton onClick={null} style={{ marginBottom: 16 }} size="large" >{text('Label','Button')}</SuccessButton>
-          <SuccessButton onClick={null} variant="outlined" style={{ marginBottom: 16 }} size="large" >{text('Label','Button')}</SuccessButton>
-          <SuccessButton onClick={null} variant="text" style={{ marginBottom: 16 }} size="large" >{text('Label','Button')}</SuccessButton>
+          <SuccessButton onClick={null} style={{ marginBottom: 16 }} size="large" >{text('Text','Button')}</SuccessButton>
+          <SuccessButton onClick={null} variant="outlined" style={{ marginBottom: 16 }} size="large" >{text('Text','Button')}</SuccessButton>
+          <SuccessButton onClick={null} variant="text" style={{ marginBottom: 16 }} size="large" >{text('Text','Button')}</SuccessButton>
         </FlexColumn>
         <FlexColumn>
-          <SuccessButton onClick={null} style={{ marginBottom: 16 }} >{text('Label','Button')}</SuccessButton>
-          <SuccessButton onClick={null} variant="outlined" style={{ marginBottom: 16 }} >{text('Label','Button')}</SuccessButton>
-          <SuccessButton onClick={null} variant="text" style={{ marginBottom: 16 }} >{text('Label','Button')}</SuccessButton>
+          <SuccessButton onClick={null} style={{ marginBottom: 16 }} >{text('Text','Button')}</SuccessButton>
+          <SuccessButton onClick={null} variant="outlined" style={{ marginBottom: 16 }} >{text('Text','Button')}</SuccessButton>
+          <SuccessButton onClick={null} variant="text" style={{ marginBottom: 16 }} >{text('Text','Button')}</SuccessButton>
         </FlexColumn>
         <FlexColumn>
-          <SuccessButton onClick={null} style={{ marginBottom: 16 }} size="small" >{text('Label','Button')}</SuccessButton>
-          <SuccessButton onClick={null} variant="outlined" style={{ marginBottom: 16 }} size="small" >{text('Label','Button')}</SuccessButton>
-          <SuccessButton onClick={null} variant="text" style={{ marginBottom: 16 }} size="small" >{text('Label','Button')}</SuccessButton>
+          <SuccessButton onClick={null} style={{ marginBottom: 16 }} size="small" >{text('Text','Button')}</SuccessButton>
+          <SuccessButton onClick={null} variant="outlined" style={{ marginBottom: 16 }} size="small" >{text('Text','Button')}</SuccessButton>
+          <SuccessButton onClick={null} variant="text" style={{ marginBottom: 16 }} size="small" >{text('Text','Button')}</SuccessButton>
         </FlexColumn>
         <FlexColumn>
-          <SuccessButton onClick={null} style={{ marginBottom: 16 }} size="large" >{text('Label','Button')}</SuccessButton>
-          <SuccessButton onClick={null} style={{ marginBottom: 16 }} >{text('Label','Button')}</SuccessButton>
-          <SuccessButton onClick={null} style={{ marginBottom: 16 }} size="small" >{text('Label','Button')}</SuccessButton>
+          <SuccessButton onClick={null} style={{ marginBottom: 16 }} size="large" >{text('Text','Button')}</SuccessButton>
+          <SuccessButton onClick={null} style={{ marginBottom: 16 }} >{text('Text','Button')}</SuccessButton>
+          <SuccessButton onClick={null} style={{ marginBottom: 16 }} size="small" >{text('Text','Button')}</SuccessButton>
+        </FlexColumn>
+        {/* <FlexColumn>
+          <SuccessButton onClick={null} variant="outlined" style={{ marginBottom: 16 }} size="large" >{text('Text','Button')}</SuccessButton>
+          <SuccessButton onClick={null} variant="outlined" style={{ marginBottom: 16 }} >{text('Text','Button')}</SuccessButton>
+          <SuccessButton onClick={null} variant="outlined" style={{ marginBottom: 16 }} size="small" >{text('Text','Button')}</SuccessButton>
         </FlexColumn>
         <FlexColumn>
-          <SuccessButton onClick={null} variant="outlined" style={{ marginBottom: 16 }} size="large" >{text('Label','Button')}</SuccessButton>
-          <SuccessButton onClick={null} variant="outlined" style={{ marginBottom: 16 }} >{text('Label','Button')}</SuccessButton>
-          <SuccessButton onClick={null} variant="outlined" style={{ marginBottom: 16 }} size="small" >{text('Label','Button')}</SuccessButton>
-        </FlexColumn>
-        <FlexColumn>
-          <SuccessButton onClick={null} variant="text" style={{ marginBottom: 16 }} size="large" >{text('Label','Button')}</SuccessButton>
-          <SuccessButton onClick={null} variant="text" style={{ marginBottom: 16 }} >{text('Label','Button')}</SuccessButton>
-          <SuccessButton onClick={null} variant="text" style={{ marginBottom: 16 }} size="small" >{text('Label','Button')}</SuccessButton>
-        </FlexColumn>
+          <SuccessButton onClick={null} variant="text" style={{ marginBottom: 16 }} size="large" >{text('Text','Button')}</SuccessButton>
+          <SuccessButton onClick={null} variant="text" style={{ marginBottom: 16 }} >{text('Text','Button')}</SuccessButton>
+          <SuccessButton onClick={null} variant="text" style={{ marginBottom: 16 }} size="small" >{text('Text','Button')}</SuccessButton>
+        </FlexColumn> */}
       </FlexRow>
-    ))
+    )
   );

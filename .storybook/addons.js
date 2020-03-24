@@ -1,3 +1,4 @@
-import 'storybook-addon-material-ui/register';
+import '@storybook/addon-knobs/register';
+import './custom-addons/theme/register';
 import '@storybook/addon-actions/register';
-import '@storybook/addon-options/register'
+import '@storybook/addon-viewport/register';

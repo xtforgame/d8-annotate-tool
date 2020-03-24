@@ -25,7 +25,6 @@ export function getTheme(theme) {
     default: grey[50],
   };
   if (theme.paletteType === 'dark') {
-    primary = indigo;
     background = {
       paper: grey[800],
       default: '#303030',

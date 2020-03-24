@@ -16,6 +16,7 @@
     "development": {
       "plugins": [
         ["module-resolver", {
+          "extensions": [".js", ".ts", ".jsx", ".tsx"],
           "alias": {
             "~": "./src/library",
             "library": "./src/library"
@@ -26,6 +27,7 @@
     "production": {
       "plugins": [
         ["module-resolver", {
+          "extensions": [".js", ".ts", ".jsx", ".tsx"],
           "alias": {
             "~": "./src/library",
             "library": "./src/library"
@@ -36,6 +38,7 @@
     "test": {
       "plugins": [
         ["module-resolver", {
+          "extensions": [".js", ".ts", ".jsx", ".tsx"],
           "alias": {
             "~": "./src/library",
             "library": "./src/library"

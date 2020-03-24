@@ -5,9 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
-
-var _recompose = require("recompose");
+var _react = _interopRequireWildcard(require("react"));
 
 var _styles = require("@material-ui/core/styles");
 
@@ -21,6 +19,10 @@ var _common = _interopRequireDefault(require("../../styles/common"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -33,193 +35,156 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-const styles = theme => _objectSpread({}, (0, _common.default)(theme, ['flex']));
+const useStyles = (0, _styles.makeStyles)(theme => _objectSpread({}, (0, _common.default)(theme, ['flex'])));
 
-class CrudDialogEx extends _react.default.PureComponent {
-  constructor(props) {
-    super(props);
+var _default = props => {
+  const {
+    picker,
+    editor,
+    multiple,
+    onClose = () => {},
+    withoutList,
+    selectedValue,
+    editingParams: eP = {},
+    List = _List.default,
+    listProps,
+    list: l,
+    applySearchText = () => true,
+    renderListItem = () => undefined,
+    renderAddItem = () => undefined,
+    addItemPlacement = 'end',
+    CrudForm,
+    crudFormProps,
+    onSearchTextChange,
+    onStartSearch,
+    onFinishSearch,
+    onSubmit = () => {}
+  } = props,
+        other = _objectWithoutProperties(props, ["picker", "editor", "multiple", "onClose", "withoutList", "selectedValue", "editingParams", "List", "listProps", "list", "applySearchText", "renderListItem", "renderAddItem", "addItemPlacement", "CrudForm", "crudFormProps", "onSearchTextChange", "onStartSearch", "onFinishSearch", "onSubmit"]);
 
-    _defineProperty(this, "handleItemClick", (value, index) => {
-      const {
-        picker,
-        multiple
-      } = this.props;
-      const {
-        pickSet
-      } = this.state;
+  const classes = useStyles();
+  const [pickSet, setPickSet] = (0, _react.useState)(new Set());
+  const [formKey, setFormKey] = (0, _react.useState)(0);
+  const [viewIndex, setViewIndex] = (0, _react.useState)(withoutList ? 1 : 0);
+  const [editingSource, setEditingSource] = (0, _react.useState)(null);
+  const [editingIndex, setEditingIndex] = (0, _react.useState)(null);
+  const [otherEditingParams, setOtherEditingParams] = (0, _react.useState)(null);
+  const [searchText, setSearchText] = (0, _react.useState)(null);
 
-      if (picker) {
-        if (multiple) {
-          const newSet = new Set(pickSet);
+  const handleItemClick = (value, index) => {
+    if (picker) {
+      if (multiple) {
+        const newSet = new Set(pickSet);
 
-          if (newSet.has(value)) {
-            newSet.delete(value);
-          } else {
-            newSet.add(value);
-          }
-
-          this.setState({
-            pickSet: newSet
-          });
-        } else if (this.props.onClose) {
-          this.props.onClose(value);
+        if (newSet.has(value)) {
+          newSet.delete(value);
+        } else {
+          newSet.add(value);
         }
-      } else {
-        this.setState({
-          formKey: this.state.formKey + 1,
-          viewIndex: 1,
-          editingSource: value,
-          editingIndex: index
-        });
-      }
-    });
 
-    _defineProperty(this, "startCreate", otherEditingParams => this.setState({
-      viewIndex: 1,
-      editingSource: null,
-      editingIndex: null,
-      formKey: this.state.formKey + 1,
-      otherEditingParams
-    }));
-
-    _defineProperty(this, "switchToList", () => this.setState({
-      viewIndex: 0,
-      editingSource: null,
-      editingIndex: null
-    }));
-
-    _defineProperty(this, "cancelCreate", () => {
-      if (this.props.withoutList) {
-        if (this.props.onClose) {
-          this.props.onClose();
-        }
-      } else {
-        this.switchToList();
-      }
-    });
-
-    _defineProperty(this, "handleSubmit", editingParams => result => {
-      const {
-        picker,
-        withoutList,
-        onSubmit = () => {}
-      } = this.props;
-      const {
-        editingIndex
-      } = this.state;
-
-      if (!picker && !withoutList) {
-        this.switchToList();
+        setPickSet(newSet);
       }
 
-      onSubmit(result, editingParams, editingIndex);
-    });
+      onClose(value);
+    } else {
+      setFormKey(formKey + 1);
+      setViewIndex(1);
+      setEditingSource(value);
+      setEditingIndex(index);
+    }
+  };
 
-    _defineProperty(this, "handleSearchTextChange", cbType => (e, ...args) => {
-      const searchText = e ? e.target.value : null;
-      this.setState({
-        searchText
-      });
-      const cb = this.props[cbType];
+  const startCreate = _otherEditingParams => {
+    setFormKey(formKey + 1);
+    setViewIndex(1);
+    setEditingSource(null);
+    setEditingIndex(null);
+    setOtherEditingParams(_otherEditingParams);
+  };
 
-      if (cb) {
-        cb(searchText, e, ...args);
-      }
-    });
+  const switchToList = () => {
+    setViewIndex(0);
+    setEditingSource(null);
+    setEditingIndex(null);
+  };
 
-    this.state = {
-      pickSet: new Set(),
-      formKey: 0,
-      viewIndex: props.withoutList ? 1 : 0,
-      editingSource: null,
-      editingIndex: null
-    };
-  }
+  const cancelCreate = () => {
+    if (withoutList) {
+      onClose();
+    } else {
+      switchToList();
+    }
+  };
 
-  render() {
-    const _this$props = this.props,
-          {
-      classes,
-      selectedValue,
-      editingParams: eP = {},
-      picker,
-      editor,
-      List = _List.default,
-      listProps,
-      list: l,
-      applySearchText = () => true,
-      renderListItem = () => undefined,
-      renderAddItem = () => undefined,
-      addItemPlacement = 'end',
-      CrudForm,
-      crudFormProps,
-      onSearchTextChange,
-      onStartSearch,
-      onFinishSearch
-    } = _this$props,
-          other = _objectWithoutProperties(_this$props, ["classes", "selectedValue", "editingParams", "picker", "editor", "List", "listProps", "list", "applySearchText", "renderListItem", "renderAddItem", "addItemPlacement", "CrudForm", "crudFormProps", "onSearchTextChange", "onStartSearch", "onFinishSearch"]);
-
-    const {
-      pickSet,
-      formKey,
-      editingSource,
-      otherEditingParams,
-      searchText
-    } = this.state;
-
-    const editingParams = _objectSpread({}, eP, {}, otherEditingParams);
-
-    if (editingSource) {
-      editingParams.editingSource = editingSource;
+  const handleSubmit = editingParams => result => {
+    if (!picker && !withoutList) {
+      switchToList();
     }
 
-    let list = [...l];
+    onSubmit(result, editingParams, editingIndex);
+  };
 
-    if (searchText) {
-      list = list.filter(item => applySearchText(searchText, item));
+  const handleSearchTextChange = cbType => (e, ...args) => {
+    const searchText = e ? e.target.value : null;
+    setSearchText(searchText);
+    const cb = props[cbType];
+
+    if (cb) {
+      cb(searchText, e, ...args);
     }
+  };
 
-    const addItem = renderAddItem({
-      handleItemClick: this.startCreate
-    });
-    return _react.default.createElement(_CrudDialog.default, _extends({
-      picker: picker,
-      editor: editor,
-      editingParams: editingParams,
-      selectedValue: selectedValue,
-      crudFormOpen: !!this.state.viewIndex,
-      onBackToList: this.switchToList,
-      searchText: searchText || '',
-      onSearchTextChange: this.handleSearchTextChange('onSearchTextChange'),
-      onStartSearch: this.handleSearchTextChange('onStartSearch'),
-      onFinishSearch: this.handleSearchTextChange('onFinishSearch')
-    }, other), _react.default.createElement(_reactSwipeableViews.default, _extends({
-      index: this.state.viewIndex
-    }, {}, {
-      style: {
-        flex: 1
-      },
-      containerStyle: {
-        height: '100%'
-      },
-      disabled: true
-    }), _react.default.createElement(List, listProps, addItemPlacement === 'start' && addItem, list.map((...args) => renderListItem({
-      picked: pickSet.has(args[0]),
-      handleItemClick: this.handleItemClick.bind(null, args[0], args[1])
-    }, ...args)), addItemPlacement === 'end' && addItem), _react.default.createElement("div", {
-      className: classes.verticalFlexContainerFWFH
-    }, _react.default.createElement(CrudForm, _extends({
-      key: formKey
-    }, crudFormProps, {
-      editingParams: editingParams,
-      onDone: this.handleItemClick,
-      onCancel: this.cancelCreate,
-      onSubmit: this.handleSubmit(editingParams)
-    })))));
+  const editingParams = _objectSpread({}, eP, {}, otherEditingParams);
+
+  if (editingSource) {
+    editingParams.editingSource = editingSource;
   }
 
-}
+  let list = [...l];
 
-var _default = (0, _recompose.compose)((0, _styles.withStyles)(styles))(CrudDialogEx);
+  if (searchText) {
+    list = list.filter(item => applySearchText(searchText, item));
+  }
+
+  const addItem = renderAddItem({
+    handleItemClick: startCreate
+  });
+  return _react.default.createElement(_CrudDialog.default, _extends({
+    picker: picker,
+    editor: editor,
+    editingParams: editingParams,
+    selectedValue: selectedValue,
+    crudFormOpen: !!viewIndex,
+    onBackToList: switchToList,
+    searchText: searchText || '',
+    onSearchTextChange: handleSearchTextChange('onSearchTextChange'),
+    onStartSearch: handleSearchTextChange('onStartSearch'),
+    onFinishSearch: handleSearchTextChange('onFinishSearch'),
+    onClose: onClose,
+    withoutList: withoutList
+  }, other), _react.default.createElement(_reactSwipeableViews.default, _extends({
+    index: viewIndex
+  }, {}, {
+    style: {
+      flex: 1
+    },
+    containerStyle: {
+      height: '100%'
+    },
+    disabled: true
+  }), _react.default.createElement(List, listProps, addItemPlacement === 'start' && addItem, list.map((...args) => renderListItem({
+    picked: pickSet.has(args[0]),
+    handleItemClick: handleItemClick.bind(null, args[0], args[1])
+  }, ...args)), addItemPlacement === 'end' && addItem), _react.default.createElement("div", {
+    className: classes.verticalFlexContainerFWFH
+  }, _react.default.createElement(CrudForm, _extends({
+    key: formKey
+  }, crudFormProps, {
+    editingParams: editingParams,
+    onDone: handleItemClick,
+    onCancel: cancelCreate,
+    onSubmit: handleSubmit(editingParams)
+  })))));
+};
 
 exports.default = _default;

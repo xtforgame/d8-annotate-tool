@@ -23,7 +23,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-class EnhancedTableActionMenuButton extends _react.default.PureComponent {
+class MoreActionMenuButton extends _react.default.PureComponent {
   constructor(...args) {
     super(...args);
 
@@ -72,5 +72,5 @@ class EnhancedTableActionMenuButton extends _react.default.PureComponent {
 
 }
 
-var _default = EnhancedTableActionMenuButton;
+var _default = MoreActionMenuButton;
 exports.default = _default;
