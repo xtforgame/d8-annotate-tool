@@ -96,19 +96,21 @@ export default (props) => {
     <FormDialogInput
       label="DateRange"
       value={value}
-      displayValue={() => 'XX'}
-      renderButton={({ buttonProps }) => (
-        <Button
-          variant="contained"
-          {...buttonProps}
-        >
-          Crud Dialog
-        </Button>
-      )}
+      displayValue={() => 'Crud Dialog'}
+      // renderButton={({ buttonProps }) => (
+      //   <Button
+      //     variant="contained"
+      //     {...buttonProps}
+      //   >
+      //     Crud Dialog
+      //   </Button>
+      // )}
       onChange={setValue}
-      // buttonProps={{
-      //   fullWidth: true,
-      // }}
+      buttonProps={{
+        style: { marginTop: 16 },
+        // disabled: true,
+        fullWidth: true,
+      }}
       dialogProps={dialogProps}
       renderDialog={({
         label,
