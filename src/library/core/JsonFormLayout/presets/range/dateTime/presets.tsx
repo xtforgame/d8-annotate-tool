@@ -30,6 +30,9 @@ export const DateRangePreset = <
   component: FormDialogInput,
   extraProps: {
     buttonProps: {
+      inputProps: {
+        style: { whiteSpace: 'pre-line' },
+      },
       fullWidth: true,
     },
     renderDialog: ({
@@ -72,6 +75,9 @@ export const TimeRangePreset = <
   component: FormDialogInput,
   extraProps: {
     buttonProps: {
+      inputProps: {
+        style: { whiteSpace: 'pre-line' },
+      },
       fullWidth: true,
     },
     renderDialog: ({
@@ -114,6 +120,9 @@ FieldLink extends IFieldLink<FieldLink>
   component: FormDialogInput,
   extraProps: {
     buttonProps: {
+      inputProps: {
+        style: { whiteSpace: 'pre-line' },
+      },
       fullWidth: true,
     },
     renderDialog: ({

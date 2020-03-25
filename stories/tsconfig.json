@@ -70,6 +70,7 @@
   },
   "include": [
     "./**/*.ts",
-    "../../src/tsd/library/**/*"
+    "../src/library/**/*",
+    "../src/tsd/library/**/*"
   ],
 }

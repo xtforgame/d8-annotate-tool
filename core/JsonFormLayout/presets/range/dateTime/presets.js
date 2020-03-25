@@ -44,6 +44,11 @@ const DateRangePreset = () => ({
   component: _FormDialogInput.default,
   extraProps: {
     buttonProps: {
+      inputProps: {
+        style: {
+          whiteSpace: 'pre-line'
+        }
+      },
       fullWidth: true
     },
     renderDialog: ({
@@ -89,6 +94,11 @@ const TimeRangePreset = () => ({
   component: _FormDialogInput.default,
   extraProps: {
     buttonProps: {
+      inputProps: {
+        style: {
+          whiteSpace: 'pre-line'
+        }
+      },
       fullWidth: true
     },
     renderDialog: ({
@@ -134,6 +144,11 @@ const DateTimeRangePreset = () => ({
   component: _FormDialogInput.default,
   extraProps: {
     buttonProps: {
+      inputProps: {
+        style: {
+          whiteSpace: 'pre-line'
+        }
+      },
       fullWidth: true
     },
     renderDialog: ({
