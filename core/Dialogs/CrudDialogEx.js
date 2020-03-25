@@ -121,7 +121,7 @@ var _default = props => {
       switchToList();
     }
 
-    onSubmit(result, editingParams, editingIndex);
+    onSubmit(result, editingParams, editingIndex, onClose);
   };
 
   const handleSearchTextChange = cbType => (e, ...args) => {

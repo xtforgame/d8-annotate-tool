@@ -100,7 +100,7 @@ export default (props) => {
     if (!picker && !withoutList) {
       switchToList();
     }
-    onSubmit(result, editingParams, editingIndex);
+    onSubmit(result, editingParams, editingIndex, onClose);
   };
 
   const handleSearchTextChange = cbType => (e, ...args) => {
