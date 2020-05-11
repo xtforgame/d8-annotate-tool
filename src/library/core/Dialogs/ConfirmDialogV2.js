@@ -12,6 +12,7 @@ export default (props) => {
     open,
     onClose,
     children,
+    fullScreen,
     ...dialogProps
   } = props;
 
@@ -24,6 +25,7 @@ export default (props) => {
       buttonTexts={buttonTexts}
       open={open}
       onClose={onClose}
+      fullScreen={fullScreen}
       dialogProps={dialogProps}
     >
       {children}

@@ -24,9 +24,10 @@ var _default = props => {
     buttonTexts,
     open,
     onClose,
-    children
+    children,
+    fullScreen
   } = props,
-        dialogProps = _objectWithoutProperties(props, ["title", "contents", "contentText", "buttonComponents", "buttonTexts", "open", "onClose", "children"]);
+        dialogProps = _objectWithoutProperties(props, ["title", "contents", "contentText", "buttonComponents", "buttonTexts", "open", "onClose", "children", "fullScreen"]);
 
   return _react.default.createElement(_ConfirmDialog.default, {
     title: title,
@@ -36,6 +37,7 @@ var _default = props => {
     buttonTexts: buttonTexts,
     open: open,
     onClose: onClose,
+    fullScreen: fullScreen,
     dialogProps: dialogProps
   }, children);
 };
