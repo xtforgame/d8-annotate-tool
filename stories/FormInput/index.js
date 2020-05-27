@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
-import CrudFormBasic from './CrudFormBasic';
+import FormPhoneOrEmailInput from './FormPhoneOrEmailInput';
 
 import {
   FlexRow,
@@ -10,7 +10,7 @@ import {
 } from '../shared';
 
 console.log('module :', module);
-storiesOf('Dialogs', module)
+storiesOf('FormInputs', module)
   // .addParameters({
   //   info: {
   //     inline: true,
@@ -20,10 +20,10 @@ storiesOf('Dialogs', module)
   //     maxPropArrayLength: 10,
   //   },
   // })
-  .add('CrudFormBasic',
+  .add('FormPhoneOrEmailInput',
     ()=>(
-      <div style={{ margin: 16 }}>
-        <CrudFormBasic />
+      <div id="xxx">
+        <FormPhoneOrEmailInput />
       </div>
     )
   );
