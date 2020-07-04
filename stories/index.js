@@ -1,3 +1,6 @@
+// ScuolaDiAtene
+import './ScuolaDiAtene';
+
 // Buttons
 import './Button';
 
