@@ -57,7 +57,7 @@ const createComponentConfig = (ins = 3, outs = 2) => ({
   // mainIcon: 'icons/DroneX.png',
   mainIcon: 'icons/webhook.png',
   width: Math.max(
-    Math.max(ins, outs) * 32,
+    Math.max(ins, outs) * 48,
     64
   ),
   // height: 64,

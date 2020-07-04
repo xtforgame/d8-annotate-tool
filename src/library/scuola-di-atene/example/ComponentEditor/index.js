@@ -4,17 +4,6 @@ import Form from '@rjsf/material-ui';
 import DialogContent from '@material-ui/core/DialogContent';
 import ConfirmDialog from '~/core/Dialogs/ConfirmDialog';
 
-
-const schema = {
-  // title: 'Todo',
-  type: 'object',
-  required: ['title'],
-  properties: {
-    title: { type: 'string', title: 'Title', default: 'A new task' },
-    done: { type: 'boolean', title: 'Done?', default: false },
-  },
-};
-
 export default (props) => {
   const {
     label,
@@ -37,6 +26,67 @@ export default (props) => {
     onClose(result);
   };
 
+  const schema = {
+    title: 'Common',
+    type: 'object',
+    required: ['title'],
+    properties: {
+      id: { type: 'string', title: 'ID', default: 'A new task' },
+      done: { type: 'boolean', title: 'Done?', default: false },
+      data: {
+        type: 'object',
+        title: 'Data',
+        required: [
+          'title',
+        ],
+        properties: {
+          title: {
+            type: 'string',
+            title: 'Title',
+            description: 'A sample title',
+          },
+          details: {
+            type: 'string',
+            title: 'Task details',
+            description: 'Enter the task details',
+          },
+          done: {
+            type: 'boolean',
+            title: 'Done?',
+            default: false,
+          },
+          tasks: {
+            type: 'array',
+            title: 'Tasks',
+            items: {
+              type: 'object',
+              required: [
+                'title',
+              ],
+              properties: {
+                title: {
+                  type: 'string',
+                  title: 'Title',
+                  description: 'A sample title',
+                },
+                details: {
+                  type: 'string',
+                  title: 'Task details',
+                  description: 'Enter the task details',
+                },
+                done: {
+                  type: 'boolean',
+                  title: 'Done?',
+                  default: false,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  };
+
   return (
     <ConfirmDialog
       {...rest}
@@ -50,7 +100,7 @@ export default (props) => {
           onChange={({ formData }) => { setValue(formData); }}
           // onSubmit={handleClose}
           // onError={}
-          children={true}
+          children
         />
       </DialogContent>
     </ConfirmDialog>

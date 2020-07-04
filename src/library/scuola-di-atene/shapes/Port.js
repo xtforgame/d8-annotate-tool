@@ -14,6 +14,10 @@ export default class Port extends SdaShape {
     this.portIoType = options.portIoType || 'unknown';
     this.connectionMap = {};
     this.rphRef = this.rphPaper.circle(0, 0, 0);
+    // https://stackoverflow.com/questions/2547927/raphael-js-text-positioning-centering-text-in-a-circle
+    this.text = this.rphPaper.text(0, 0, this.portName);
+    this.text.attr({ 'font-size': 12, 'font-family': 'FranklinGothicFSCondensed-1, FranklinGothicFSCondensed-2' });
+    this.text.attr('fill', '#f1f1f1');
     this.direction = this.options.direction || [0, 0];
     this.positionData = this.options.positionData;
 
@@ -133,6 +137,32 @@ export default class Port extends SdaShape {
     return Object.values(this.connectionMap);
   }
 
+  _updateChildren(show = true) {
+    const {
+      cx,
+      cy,
+    } = this.rphRef.attr(['cx', 'cy']);
+    if (this.text) {
+      this.text.attr({
+        x: cx + (this.options.direction[0] * 5),
+        y: cy + (this.options.direction[1] * 10),
+      });
+      if (this.options.direction[0] > 0) {
+        this.text.attr({ 'text-anchor': 'start' });
+      } else if (this.options.direction[0] < 0) {
+        this.text.attr({ 'text-anchor': 'end' });
+      } else {
+        this.text.attr({ 'text-anchor': 'center' });
+      }
+    }
+    if (show) {
+      this.text.show();
+    } else {
+      this.text.hide();
+    }
+    return this;
+  }
+
   attr(...args) {
     const result = this.rphRef.attr(...args);
     const attrCallType = this._getAttrCallType(...args);
@@ -144,6 +174,7 @@ export default class Port extends SdaShape {
         this.getConnections().forEach(
           c => c.redraw()
         );
+        this._updateChildren(true);
       }
       return this;
     }
@@ -183,6 +214,9 @@ export default class Port extends SdaShape {
     .forEach((c) => {
       this.ext.portManager.disconnect(c);
     });
+    if (this.text) {
+      this.text.remove();
+    }
     return super.remove();
   }
 }
