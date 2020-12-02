@@ -161,7 +161,7 @@ export default (props) => {
         open={menuInfo.open}
         onClose={handleMenuClose}
       >
-        <MenuItem
+        {/* <MenuItem
           // selected
           onClick={() => {
             handleDialogOpen(menuInfo.targetShape);
@@ -169,7 +169,7 @@ export default (props) => {
           }}
         >
           Edit
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem
           // selected
           onClick={() => {

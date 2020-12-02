@@ -81,7 +81,7 @@ export default class TestPaper extends SdaPaper {
     //     setSelection: this.setSelection,
     //   });
     // }, 10000);
-    this.ext.rectDrawer.enable(false);
+    // this.ext.rectDrawer.enable(false);
     // this.ext.rectSelection.enable(true, {
     //   getSelectables: this.getCompnents,
     //   getSelection: this.getSelection,
@@ -170,10 +170,11 @@ export default class TestPaper extends SdaPaper {
   }
 
   combination(args, options = {}, eventOptions = {}) {
+    console.log('args, options, eventOptions :', args, options, eventOptions);
     const shape = new Combination(this, options.uid || this.createUID(), args, options);
     this.setupExtensionsForShape(shape);
 
-    shape.ext.rectMoveAndResize.enable(true, false, {
+    shape.ext.rectMoveAndResize.enable(true, true, {
       dragstart: () => {
         if (!this.isSelected(shape)) {
           this.setSelectionByIds([shape.id]);

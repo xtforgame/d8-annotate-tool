@@ -143,27 +143,6 @@ export default class Combination extends SdaShape {
           accept: { byPortTypes: ['parent'], excludeOwner: true },
         }));
       }
-    } else {
-      this.addPort('left1', {
-        direction: this.transformByLayoutOrientation([-1, 0]),
-        positionData: this.transformByLayoutOrientation([0, '25%']),
-      });
-      this.addPort('left2', {
-        direction: this.transformByLayoutOrientation([-1, 0]),
-        positionData: this.transformByLayoutOrientation([0, '50%']),
-      });
-      this.addPort('left3', {
-        direction: this.transformByLayoutOrientation([-1, 0]),
-        positionData: this.transformByLayoutOrientation([0, '75%']),
-      });
-      this.addPort('right1', {
-        direction: this.transformByLayoutOrientation([1, 0]),
-        positionData: this.transformByLayoutOrientation(['100%', '33.3%']),
-      });
-      this.addPort('right2', {
-        direction: this.transformByLayoutOrientation([1, 0]),
-        positionData: this.transformByLayoutOrientation(['100%', '66.6%']),
-      });
     }
     this._updateStyle();
     this._updateChildren();

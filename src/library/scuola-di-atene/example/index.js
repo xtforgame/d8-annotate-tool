@@ -177,15 +177,14 @@ export class SdaEditor extends React.Component {
         {/* <div className={classes.spacing10} />
         <Divider />
         <div className={classes.spacing10} /> */}
-        <div className={classes.verticalFlexContainer2}>
-          {/* <div className={classes.vPlaceHolder} /> */}
+        {/* <div className={classes.verticalFlexContainer2}>
           <SdaComponentListH
             list={this.state.rectList}
             selectedIds={this.state.selectedIds}
             onDeleteId={this.onDeleteId}
             onSelectedIdsChange={this.onSelectedIdsChange(true)}
           />
-        </div>
+        </div> */}
         {/* <div className={classes.spacing10} />
         <Divider />
         <div className={classes.spacing10} /> */}
